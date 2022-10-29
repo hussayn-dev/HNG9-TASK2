@@ -8,8 +8,8 @@
     "node": "18.9.0"
   },
   "scripts": {
-    "build": "tsc --init",
-    "start": "node dist/index.js"
+    "tsc": "tsc",
+    "start:prod": "node build/index.js"
   },
   "keywords": [],
   "author": "",
