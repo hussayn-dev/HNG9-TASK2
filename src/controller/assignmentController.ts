@@ -44,7 +44,7 @@ class AssignmentController {
       let result: number = 0;
       let x: number = Number(req.body.x);
       let y: number = Number(req.body.y);
-      let operation_type= null;
+      let operation_type= "";
       let operationType = req.body.operation_type;
 
 
@@ -54,7 +54,7 @@ class AssignmentController {
         operationType.includes("+")
       ) {
         result += x + y;
-        operation_type = "addition";
+        operation_type += "addition";
       }
       if (
         operationType.includes("multiply") ||
@@ -64,7 +64,7 @@ class AssignmentController {
         operationType.includes("times")
       ) {
         result += x * y;
-        operation_type = "multiplication"
+        operation_type += "multiplication"
       }
       if (
         operationType.includes("subtraction") ||
@@ -72,13 +72,13 @@ class AssignmentController {
         operationType.includes("-")
       ) {
         result += x - y;
-        operation_type = "subtraction"
+        operation_type += "subtraction"
       }
 // submitted late because of school test forgive me
       res.status(200).json({
         slackUserName: "hussaynabdsamad07",
         result,
-        operation_type,
+        operation_type : operation_type,
       });
     } catch (error: any) {
       return res.status(400).json({
