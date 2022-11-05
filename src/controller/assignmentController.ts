@@ -42,49 +42,39 @@ class AssignmentController {
       }
 
       let result: number = 0;
-      let x: number = req.body.x;
-      let y: number = req.body.y;
+      let x: number = Number(req.body.x);
+      let y: number = Number(req.body.y);
       let operation_type: string = req.body.operation_type;
 
-      // switch (operation_type) {
-      // case 'add":
-      //   case "+":
-      //   ca
-      //  result += x + y;
-      //  break;
-      //  case "substracttion":
-      //  case "-" :
-      //  result += x - y;
-      //  break;
-      //  case "multiplication":
-      //  case "x" :
-      //  result += x * y;
-      //  break;
-      // }
+
       if (
         operation_type.includes("add") ||
         operation_type.includes("addition") ||
         operation_type.includes("+")
       ) {
         result += x + y;
+        operation_type = "addition"
       }
       if (
         operation_type.includes("multiply") ||
         operation_type.includes("x") ||
         operation_type.includes("*") ||
+        operation_type.includes("multiplication"),
         operation_type.includes("times")
       ) {
         result += x * y;
+        operation_type = "multiplication"
       }
       if (
-        operation_type.includes("substracttion") ||
+        operation_type.includes("subtraction") ||
         operation_type.includes("minus") ||
         operation_type.includes("-")
       ) {
         result += x - y;
+        operation_type = "subtraction"
       }
 // submitted late because of school test forgive me
-      res.json({
+      res.status(200).json({
         slackUserName: "hussaynabdsamad07",
         result,
         operation_type,
