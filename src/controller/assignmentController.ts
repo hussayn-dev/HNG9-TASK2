@@ -44,31 +44,32 @@ class AssignmentController {
       let result: number = 0;
       let x: number = Number(req.body.x);
       let y: number = Number(req.body.y);
-      let operation_type: string = req.body.operation_type;
+      let operation_type= null;
+      let operationType = req.body.operation_type;
 
 
       if (
-        operation_type.includes("add") ||
-        operation_type.includes("addition") ||
-        operation_type.includes("+")
+        operationType.includes("add") ||
+        operationType.includes("addition") ||
+        operationType.includes("+")
       ) {
         result += x + y;
-        operation_type = "addition"
+        operation_type = "addition";
       }
       if (
-        operation_type.includes("multiply") ||
-        operation_type.includes("x") ||
-        operation_type.includes("*") ||
-        operation_type.includes("multiplication"),
-        operation_type.includes("times")
+        operationType.includes("multiply") ||
+        operationType.includes("x") ||
+        operationType.includes("*") || 
+        operationType.includes("multiplication"),
+        operationType.includes("times")
       ) {
         result += x * y;
         operation_type = "multiplication"
       }
       if (
-        operation_type.includes("subtraction") ||
-        operation_type.includes("minus") ||
-        operation_type.includes("-")
+        operationType.includes("subtraction") ||
+        operationType.includes("minus") ||
+        operationType.includes("-")
       ) {
         result += x - y;
         operation_type = "subtraction"
